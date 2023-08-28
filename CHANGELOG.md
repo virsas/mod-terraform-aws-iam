@@ -5,3 +5,6 @@
 - Initial commit
 - Password policy
 - Account analyzer
+- SAML provider
+- User creation
+- Access key creation

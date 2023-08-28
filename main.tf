@@ -48,3 +48,18 @@ resource "aws_iam_saml_provider" "vss" {
   name                   = var.saml_name
   saml_metadata_document = file("${var.saml_path}/${var.saml_name}.xml")
 }
+
+resource "aws_iam_user" "vss" {
+  count = var.user_create ? 1 : 0
+
+  name          = var.user_name
+  path          = var.user_path
+
+  force_destroy = var.user_force_destroy
+}
+
+resource "aws_iam_access_key" "vss" {
+  count = var.access_key_create ? 1 : 0
+
+  user          = var.access_key_user_name
+}

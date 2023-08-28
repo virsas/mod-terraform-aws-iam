@@ -115,3 +115,35 @@ variable "saml_path" {
   type                  = string
   default               = "./xml/iam"
 }
+
+variable "user_create" {
+  description           = "Enable the process of user creation"
+  type                  = bool
+  default               = false
+}
+variable "user_name" {
+  description           = "Name of the iam user. Defaults to user."
+  type                  = string
+  default               = "user"
+}
+variable "user_path" {
+  description           = "Path in which to create the user. Defaults to /"
+  type                  = string
+  default               = "/"
+}
+variable "user_force_destroy" {
+  description           = "Whether to destroy user in case he created his own keys outside terraform. Defaults to true"
+  type                  = bool
+  default               = true
+}
+
+variable "access_key_create" {
+  description           = "Enable the process of access key creation. Defaults to false."
+  type                  = bool
+  default               = false
+}
+variable "access_key_user_name" {
+  description           = "The user name for whom to create the access key. Defaults to user."
+  type                  = string
+  default               = "user"
+}
