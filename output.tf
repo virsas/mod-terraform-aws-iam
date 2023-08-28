@@ -13,8 +13,8 @@ output "user_name" {
 output "user_unique_id" {
   value = try(aws_iam_user.vss[0].unique_id, "")
 }
-output "access_key_created_date" {
-  value = try(aws_iam_access_key.vss[0].created_date, "")
+output "access_key_create_date" {
+  value = try(aws_iam_access_key.vss[0].create_date, "")
 }
 output "access_key_id" {
   value = try(aws_iam_access_key.vss[0].id, "")
