@@ -32,7 +32,7 @@ resource "aws_accessanalyzer_analyzer" "vss_org" {
   analyzer_name = var.analyzer_name
   type          = "ORGANIZATION"
 
-  depends_on = [aws_organizations_organization.example]
+  depends_on = [aws_organizations_organization.vss_org[0]]
 }
 
 resource "aws_accessanalyzer_analyzer" "vss" {
