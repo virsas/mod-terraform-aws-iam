@@ -21,12 +21,12 @@ resource "aws_iam_account_password_policy" "vss" {
   max_password_age               = var.password_configuration_max_age
 }
 
-resource "aws_organizations_organization" "vss" {
+resource "aws_organizations_organization" "vss_org" {
   count = var.analyzer_enabled && var.analyzer_type == "ORGANIZATION" ? 1 : 0
   aws_service_access_principals = ["access-analyzer.amazonaws.com"]
 }
 
-resource "aws_accessanalyzer_analyzer" "vss" {
+resource "aws_accessanalyzer_analyzer" "vss_org" {
   count = var.analyzer_enabled && var.analyzer_type == "ORGANIZATION" ? 1 : 0
 
   analyzer_name = var.analyzer_name
