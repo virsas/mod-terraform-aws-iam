@@ -41,3 +41,10 @@ resource "aws_accessanalyzer_analyzer" "vss" {
   analyzer_name = var.analyzer_name
   type          = "ACCOUNT"
 }
+
+resource "aws_iam_saml_provider" "vss" {
+  count = var.saml_enabled ? 1 : 0
+
+  name                   = var.saml_name
+  saml_metadata_document = file("${var.saml_path}/${var.saml_name}.xml")
+}

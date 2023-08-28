@@ -99,3 +99,19 @@ variable "analyzer_name" {
   type                  = string
   default               = "AccessAnalyzer"
 }
+
+variable "saml_enabled" {
+  description           = "Enable IAM SAML Provider configuration. Defaults to false."
+  type                  = bool
+  default               = false
+}
+variable "saml_name" {
+  description           = "Name of the saml provider. This name is used for the file too. Defaults to SamlProvider and it would look for saml_path/SamlProvider.xml file"
+  type                  = string
+  default               = "SamlProvider"
+}
+variable "saml_path" {
+  description           = "Path to xml files for iam saml configuration. Defaults to ./xml/iam"
+  type                  = string
+  default               = "./xml/iam"
+}
