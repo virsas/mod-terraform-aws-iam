@@ -63,3 +63,28 @@ resource "aws_iam_access_key" "vss" {
 
   user          = var.access_key_user_name
 }
+
+resource "aws_iam_policy" "vss" {
+  count = var.policy_create ? 1 : 0
+
+  name = var.policy_name
+  policy = file("${var.policy_path}/${var.policy_name}.json")
+}
+
+resource "aws_iam_role" "vss" {
+  count = var.role_create ? 1 : 0
+
+  name                  = var.role_name
+  assume_role_policy    = file("${var.role_path}/${var.role_name}.json")
+
+  managed_policy_arns   = var.role_policies
+
+  max_session_duration  = var.role_session_duration
+}
+
+resource "aws_iam_instance_profile" "profile" {
+  count = var.role_create ? 1 : 0
+
+  name                  = var.role_name
+  role                  = aws_iam_role.vss.name
+}

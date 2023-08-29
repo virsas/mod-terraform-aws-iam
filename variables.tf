@@ -147,3 +147,50 @@ variable "access_key_user_name" {
   type                  = string
   default               = "user"
 }
+
+variable "policy_create" {
+  description           = "Enable the process of policy creation. The policy can be then used by a group or role."
+  type                  = bool
+  default               = false
+}
+variable "policy_name" {
+  description           = "Name of the policy. Defaults to policy"
+  type                  = string
+  default               = "policy"
+}
+variable "policy_path" {
+  description           = "Path to json files for iam policy configuration. Defaults to ./json/iam/policy"
+  type                  = string
+  default               = "./json/iam/policy"
+}
+
+variable "role_create" {
+  description           = "Enable the process of role creation. Defaults to false."
+  type                  = bool
+  default               = false
+}
+variable "role_name" {
+  description           = "Name of the role. Defaults to role."
+  type                  = string
+  default               = "role"
+}
+variable "role_path" {
+  description           = "Path to json files for iam role configuration. Defaults to ./json/iam/role"
+  type                  = string
+  default               = "./json/iam/role"
+}
+variable "role_policies" {
+  description           = "List of policy arns. Can be AWS predefined or your custom ones. Defaults to empty list."
+  type                  = list(string)
+  default               = []
+}
+variable "role_session_duration" {
+  description           = "Duration of the session the role can be used for. Defaults to 1 hour and can be set to 12 hours."
+  type                  = number
+  default               = 1
+
+  validation {
+    condition     = var.role_session_duration >= 1 && var.role_session_duration <= 12 && floor(var.role_session_duration) == var.role_session_duration
+    error_message = "Accepted values: 1-12."
+  }
+}
