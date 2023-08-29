@@ -204,3 +204,29 @@ variable "role_session_duration" {
     error_message = "Accepted values: 3600-43200."
   }
 }
+
+variable "group_create" {
+  description           = "Enable the process of group creation. Defaults to false."
+  type                  = bool
+  default               = false
+}
+variable "group_name" {
+  description           = "Name of the iam group. Defaults to group."
+  type                  = string
+  default               = "group"
+}
+variable "group_path" {
+  description           = "Path in which to create the group. Defaults to /"
+  type                  = string
+  default               = "/"
+}
+variable "group_users" {
+  description           = "List of user names attached to this group. Defaults to an empty list."
+  type                  = list(string)
+  default               = []
+}
+variable "group_policy" {
+  description           = "An ARN of a policy that should be attached to this group. Defaults to an empty string."
+  type                  = string
+  default               = ""
+}

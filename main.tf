@@ -88,3 +88,26 @@ resource "aws_iam_instance_profile" "vss" {
   name                  = var.role_name
   role                  = aws_iam_role.vss[0].name
 }
+
+resource "aws_iam_group" "vss" {
+  count = var.group_create ? 1 : 0
+
+  name  = var.group_name
+  path  = var.group_path
+}
+
+resource "aws_iam_group_membership" "members" {
+  count = var.group_create ? 1 : 0
+
+  name  = "${var.group_name}-membership"
+  users = var.group_users
+
+  group = aws_iam_group.vss[0].name
+}
+
+resource "aws_iam_group_policy_attachment" "test-attach" {
+  count = var.group_create ? 1 : 0
+
+  group      = aws_iam_group.vss[0].name
+  policy_arn = var.group_policy
+}
