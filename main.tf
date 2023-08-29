@@ -82,9 +82,9 @@ resource "aws_iam_role" "vss" {
   max_session_duration  = var.role_session_duration
 }
 
-resource "aws_iam_instance_profile" "profile" {
+resource "aws_iam_instance_profile" "vss" {
   count = var.role_create ? 1 : 0
 
   name                  = var.role_name
-  role                  = aws_iam_role.vss.name
+  role                  = aws_iam_role.vss[0].name
 }
