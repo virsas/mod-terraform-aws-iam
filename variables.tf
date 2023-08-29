@@ -158,8 +158,8 @@ variable "policy_name" {
   type                  = string
   default               = "policy"
 }
-variable "policy_enviroment" {
-  description           = "If specified the policy will be named as policy_name, but the json file used will be combination of both name-enviroment.json. Defaults to empty string."
+variable "policy_environment" {
+  description           = "If specified the policy will be named as policy_name, but the json file used will be combination of both name-environment.json. Defaults to empty string."
   type                  = string
   default               = ""
 }
@@ -179,8 +179,8 @@ variable "role_name" {
   type                  = string
   default               = "role"
 }
-variable "role_enviroment" {
-  description           = "If specified the role will be named as role_name, but the json file used will be combination of both name-enviroment.json. Defaults to empty string."
+variable "role_environment" {
+  description           = "If specified the role will be named as role_name, but the json file used will be combination of both name-environment.json. Defaults to empty string."
   type                  = string
   default               = ""
 }
