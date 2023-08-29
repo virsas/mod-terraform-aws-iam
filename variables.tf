@@ -158,6 +158,11 @@ variable "policy_name" {
   type                  = string
   default               = "policy"
 }
+variable "policy_enviroment" {
+  description           = "If specified the policy will be named as policy_name, but the json file used will be combination of both name-enviroment.json. Defaults to empty string."
+  type                  = string
+  default               = ""
+}
 variable "policy_path" {
   description           = "Path to json files for iam policy configuration. Defaults to ./json/iam/policy"
   type                  = string
@@ -173,6 +178,11 @@ variable "role_name" {
   description           = "Name of the role. Defaults to role."
   type                  = string
   default               = "role"
+}
+variable "role_enviroment" {
+  description           = "If specified the role will be named as role_name, but the json file used will be combination of both name-enviroment.json. Defaults to empty string."
+  type                  = string
+  default               = ""
 }
 variable "role_path" {
   description           = "Path to json files for iam role configuration. Defaults to ./json/iam/role"

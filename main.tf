@@ -68,14 +68,14 @@ resource "aws_iam_policy" "vss" {
   count = var.policy_create ? 1 : 0
 
   name = var.policy_name
-  policy = file("${var.policy_path}/${var.policy_name}.json")
+  policy = var.policy_enviroment != "" ? file("${var.policy_path}/${var.policy_name}-${var.policy_enviroment}.json") : file("${var.policy_path}/${var.policy_name}.json")
 }
 
 resource "aws_iam_role" "vss" {
   count = var.role_create ? 1 : 0
 
   name                  = var.role_name
-  assume_role_policy    = file("${var.role_path}/${var.role_name}.json")
+  assume_role_policy    = var.role_enviroment != "" ? file("${var.role_path}/${var.role_name}-${var.role_enviroment}.json") : file("${var.role_path}/${var.role_name}.json")
 
   managed_policy_arns   = var.role_policies
 
