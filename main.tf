@@ -96,7 +96,7 @@ resource "aws_iam_group" "vss" {
   path  = var.group_path
 }
 
-resource "aws_iam_group_membership" "members" {
+resource "aws_iam_group_membership" "vss" {
   count = var.group_create ? 1 : 0
 
   name  = "${var.group_name}-membership"
@@ -105,7 +105,7 @@ resource "aws_iam_group_membership" "members" {
   group = aws_iam_group.vss[0].name
 }
 
-resource "aws_iam_group_policy_attachment" "test-attach" {
+resource "aws_iam_group_policy_attachment" "vss" {
   count = var.group_create ? 1 : 0
 
   group      = aws_iam_group.vss[0].name
