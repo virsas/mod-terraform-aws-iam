@@ -187,10 +187,10 @@ variable "role_policies" {
 variable "role_session_duration" {
   description           = "Duration of the session the role can be used for. Defaults to 1 hour and can be set to 12 hours."
   type                  = number
-  default               = 1
+  default               = 3600
 
   validation {
-    condition     = var.role_session_duration >= 1 && var.role_session_duration <= 12 && floor(var.role_session_duration) == var.role_session_duration
-    error_message = "Accepted values: 1-12."
+    condition     = var.role_session_duration >= 3600 && var.role_session_duration <= 43200 && floor(var.role_session_duration) == var.role_session_duration
+    error_message = "Accepted values: 3600-43200."
   }
 }
