@@ -50,7 +50,7 @@ Terraform module to configure IAM users, groups, roles and passwords
 
 ### Password policy
 
-```terraform
+```
 module "iam_password" {
   source  = "git::https://github.com/virsas/mod-terraform-aws-iam.git?ref=v1.0.0"
 
@@ -128,7 +128,7 @@ output "admin_secret" {
 
 ### Role with predefined policy
 
-```terraform
+```
 module "iam_role_AWSSupport" {
   source  = "git::https://github.com/virsas/mod-terraform-aws-iam.git?ref=v1.0.0"
 
@@ -162,7 +162,7 @@ module "iam_role_AWSSupport" {
 
 ### Role with custom policy
 
-```terraform
+```
 module "iam_role_ec2_policy" {
   source  = "git::https://github.com/virsas/mod-terraform-aws-iam.git?ref=v1.0.0"
 
@@ -255,7 +255,7 @@ module "iam_role_ec2" {
 
 ### Google SAML Provider
 
-```terraform
+```
 module "google_saml_provider" {
   source  = "git::https://github.com/virsas/mod-terraform-aws-iam.git?ref=v1.0.0"
 
