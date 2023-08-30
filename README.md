@@ -50,7 +50,7 @@ Terraform module to configure IAM users, groups, roles and passwords
 
 ### Password policy
 
-```
+```terraform
 module "iam_password" {
   source  = "git::https://github.com/virsas/mod-terraform-aws-iam.git?ref=v1.0.0"
 
@@ -65,7 +65,7 @@ module "iam_password" {
 
 ### IAM user
 
-```
+```terraform
 module "iam_user_admin" {
   source  = "git::https://github.com/virsas/mod-terraform-aws-iam.git?ref=v1.0.0"
 
@@ -75,6 +75,7 @@ module "iam_user_admin" {
   user_create     = true
   user_name       = "admin"
 }
+
 module "iam_user_admin_key" {
   source  = "git::https://github.com/virsas/mod-terraform-aws-iam.git?ref=v1.0.0"
 
@@ -84,6 +85,7 @@ module "iam_user_admin_key" {
   access_key_create     = true
   access_key_user_name  = module.iam_user_admin.user_name
 }
+
 module "iam_group_admin_policy" {
   source  = "git::https://github.com/virsas/mod-terraform-aws-iam.git?ref=v1.0.0"
 
@@ -94,6 +96,7 @@ module "iam_group_admin_policy" {
   policy_path     = "./json/iam_groups"
   policy_name     = "admin"
 }
+
 module "iam_group_admin" {
   source  = "git::https://github.com/virsas/mod-terraform-aws-iam.git?ref=v1.0.0"
 
@@ -106,14 +109,16 @@ module "iam_group_admin" {
   group_policy    = module.iam_group_admin_policy.policy_arn
   group_users     = [module.iam_user_admin.user_name]
 }
+
 output "admin_secret" {
     value = module.iam_user_admin_key.access_key_secret
     sensitive = true
 }
 ```
 
+./json/iam_groups
+
 ```json
-// ./json/iam_groups
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -143,8 +148,9 @@ module "iam_role_AWSSupport" {
 }
 ```
 
+./json/iam_roles/AWSSupport-production.json
+
 ```json
-// ./json/iam_roles/AWSSupport-production.json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -173,6 +179,7 @@ module "iam_role_ec2_policy" {
   policy_path     = "./json/iam_policies"
   policy_name     = "ec2"
 }
+
 module "iam_role_ec2" {
   source  = "git::https://github.com/virsas/mod-terraform-aws-iam.git?ref=v1.0.0"
 
@@ -186,8 +193,9 @@ module "iam_role_ec2" {
 }
 ```
 
+./json/iam_roles/ec2.json
+
 ```json
-// ./json/iam_roles/ec2.json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -200,14 +208,17 @@ module "iam_role_ec2" {
     }
   ]
 }
+```
 
-// ./json/iam_policies/ec2.json
+./json/iam_policies/ec2.json
+
+```json
 {
   "Version": "2012-10-17",
   "Statement": [
     {
       "Effect": "Allow",
-      "Action": [ "ec2:DescribeTags" ],
+      "Action": ["ec2:DescribeTags"],
       "Resource": "*"
     },
     {
@@ -222,7 +233,7 @@ module "iam_role_ec2" {
     },
     {
       "Effect": "Allow",
-      "Action": [ "xray:*" ],
+      "Action": ["xray:*"],
       "Resource": "*"
     },
     {
@@ -255,7 +266,7 @@ module "iam_role_ec2" {
 
 ### Google SAML Provider
 
-```
+```terraform
 module "google_saml_provider" {
   source  = "git::https://github.com/virsas/mod-terraform-aws-iam.git?ref=v1.0.0"
 
@@ -266,13 +277,15 @@ module "google_saml_provider" {
   saml_name       = "googleAuth"
   saml_path       = "./xml"
 }
+
 output "GoogleAuthProviderArn" {
     value = module.google_saml_provider.saml_arn
 }
 ```
 
+./xml/googleAuth.xml
+
 ```xml
-<!-- ./xml/googleAuth.xml -->
 <?xml version="1.0" encoding="UTF-8"?>
 <md:EntityDescriptor>
   <md:IDPSSODescriptor>
