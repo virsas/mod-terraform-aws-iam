@@ -67,3 +67,24 @@ output "profile_id" {
 output "profile_arn" {
   value = try(aws_iam_instance_profile.vss[0].arn, "")
 }
+output "group_id" {
+  value = try(aws_iam_group.vss[0].id, "")
+}
+output "group_arn" {
+  value = try(aws_iam_group.vss[0].arn, "")
+}
+output "group_name" {
+  value = try(aws_iam_group.vss[0].name, "")
+}
+output "group_unique_id" {
+  value = try(aws_iam_group.vss[0].unique_id, "")
+}
+output "group_membership_name" {
+  value = try(aws_iam_group_membership.vss[0].name, "")
+}
+output "group_membership_users" {
+  value = try(aws_iam_group_membership.vss[0].users, "")
+}
+output "group_membership_group" {
+  value = try(aws_iam_group_membership.vss[0].group, "")
+}

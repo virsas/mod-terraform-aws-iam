@@ -8,3 +8,6 @@
 - SAML provider
 - User creation
 - Access key creation
+- Custom IAM policies
+- Roles
+- Groups & membership
