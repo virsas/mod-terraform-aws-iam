@@ -133,7 +133,7 @@ output "admin_secret" {
 
 ### Role with predefined policy
 
-```
+```terraform
 module "iam_role_AWSSupport" {
   source  = "git::https://github.com/virsas/mod-terraform-aws-iam.git?ref=v1.0.0"
 
@@ -168,7 +168,7 @@ module "iam_role_AWSSupport" {
 
 ### Role with custom policy
 
-```
+```terraform
 module "iam_role_ec2_policy" {
   source  = "git::https://github.com/virsas/mod-terraform-aws-iam.git?ref=v1.0.0"
 
